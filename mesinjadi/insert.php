@@ -2,23 +2,24 @@
 
 require_once("../config.php");
 
-if(isset($_POST['insert_operator'])){
+if(isset($_POST['insert'])){
 
-    $nama_operator = $_POST['nama_operator'];
-    $jenis_pekerjaan = $_POST['jenis_pekerjaan'];
-    $jam_kerja = $_POST['jam_kerja'];
-
+    $id_operator = $_POST['id_operator'];
+    $merk_mesin = $_POST['merk_mesin'];
+    $tanggal_maintenance = $_POST['tanggal_maintenance'];
+    $nama_mesin = $_POST['nama_mesin'];
 
     // menyiapkan query
-	$sql = "INSERT INTO operator (nama_operator, jenis_pekerjaan, jam_kerja_operator) 
-	VALUES (:nama_operator, :jenis_pekerjaan, :jam_kerja)";
+	$sql = "INSERT INTO mesin_produk_jadi (id_operator, merk_mesin, tanggal_maintenance, nama_mesin) 
+	VALUES (:id_operator, :merk_mesin, :tanggal_maintenance, :nama_mesin)";
 	$insert = $db->prepare($sql);
 
     // bind parameter ke query
 	$params = array(
-		":nama_operator" => $nama_operator,
-		":jenis_pekerjaan" => $jenis_pekerjaan,
-		":jam_kerja" => $jam_kerja,
+		":id_operator" => $id_operator,
+		":merk_mesin" => $merk_mesin,
+		":tanggal_maintenance" => $tanggal_maintenance,
+		":nama_mesin" => $nama_mesin,
 	);
 
     // eksekusi query untuk menyimpan ke database

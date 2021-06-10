@@ -81,7 +81,7 @@
             <button type="button" class="btn btn-success w-50" data-toggle="modal" data-target="#modal_change_operator_'.$id_operator.'">
             <i class="fa fa-edit"></i>
             </button>
-            <input type="hidden" class="form-control" id="id" name="id" value="'.$id_operator.'">
+            <input type="hidden" class="form-control" id="id_operator" name="id_operator" value="'.$id_operator.'">
             <button type="submit" name="delete" class="btn btn-danger w-50">
             <i class="fa fa-trash"></i>
             </button>

@@ -2,7 +2,7 @@
 
 require_once("../config.php");
 
-if(isset($_POST['delete_operator'])){
+if(isset($_POST['delete'])){
     $id_operator = $_POST['id_operator'];
 
     // menyiapkan query

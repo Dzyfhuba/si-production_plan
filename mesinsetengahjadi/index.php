@@ -35,16 +35,24 @@
                   <div class="modal-body">
                     <form name="insert" id="insert" method="POST" action="insert.php">
                       <div class="form-group">
-                        <label for="nama_operator">Nama Operator</label>
-                        <input type="text" class="form-control" id="nama_operator" name="nama_operator" aria-describedby="nama_operator" placeholder="Nama Operator">
+                        <label for="nama_mesin">id operator</label>
+                        <input type="text" class="form-control" id="nama_mesin" name="nama_mesin" aria-describedby="nama_mesin" placeholder="id Operator">
                     </div>
                     <div class="form-group">
-                        <label for="jenis_pekerjaan">Jenis Pekerjaan</label>
-                        <input type="text" class="form-control" id="jenis_pekerjaan" name="jenis_pekerjaan" placeholder="Jenis Pekerjaan">
+                        <label for="tanggal_maintenance">id bahan baku</label>
+                        <input type="text" class="form-control" id="tanggal_maintenance" name="tanggal_maintenance" placeholder="id bahan baku">
                     </div>
                     <div class="form-group">
-                        <label for="jam_kerja">Jam Kerja</label>
-                        <input type="text" class="form-control" id="jam_kerja" name="jam_kerja" placeholder="Jam Kerja">
+                        <label for="merk_mesin">merk</label>
+                        <input type="text" class="form-control" id="merk_mesin" name="merk_mesin" placeholder="merk mesin">
+                    </div>
+                    <div class="form-group">
+                        <label for="merk_mesin">tanggal maintenance</label>
+                        <input type="text" class="form-control" id="tanggal_maintenance" name="tanggal_maintenance" placeholder="tanggalmaintenance">
+                    </div>
+                    <div class="form-group">
+                        <label for="merk_mesin">nama mesin</label>
+                        <input type="text" class="form-control" id="nama_mesin" name="nama_mesin" placeholder="nama mesin">
                     </div>
                     <button type="submit" class="btn btn-primary" name="insert">Submit</button>
                 </form>
@@ -55,10 +63,12 @@
 <table class="table table-bordered">
   <thead class="thead-dark text-center">
     <tr>
+        <th scope="col">id mesin</th>
         <th scope="col">id operator</th>
-        <th scope="col">nama operator</th>
-        <th scope="col">jenis pekerjaan</th>
-        <th scope="col">jam kerja</th>
+        <th scope="col">id bahan baku</th>
+        <th scope="col">merk</th>
+        <th scope="col">tanggal maintenance</th>
+        <th scope="col">nama mesin</th>
         <th scope="col">kontrol</th>
     </tr>
 </thead>
@@ -66,22 +76,27 @@
     <?php
     if ($data_operator){
         foreach($data_operator as $data) {
+            $id_mesin = $data["id_mesin_produk_setengah_jadi"];
             $id_operator = $data["id_operator"];
-            $nama_operator = $data["nama_operator"];
-            $jenis_pekerjaan = $data["jenis_pekerjaan"];
-            $jam_kerja = $data["jam_kerja_operator"];
+            $nama_mesin = $data["nama_mesin"];
+            $id_bahan_baku = $data["id_bahan_baku"];
+            $merk = $data["merk_mesin"];
+            $tanggal_maintenance = $data["tanggal_maintenance"];
+            $nama_mesin = $data["nama_mesin"];
             echo '<tr>
-            <th scope="row">'.$id_operator.'</th>
-            <td>'.$nama_operator.'</td>
-            <td>'.$jenis_pekerjaan.'</td>
-            <td>'.$jam_kerja.'</td>
+            <td>'.$id_mesin.'</td>
+            <td>'.$id_operator.'</td>
+            <td>'.$id_bahan_baku.'</td>
+            <td>'.$merk.'</td>
+            <td>'.$tanggal_maintenance.'</td>
+            <td>'.$nama_mesin.'</td>
             <td class="text-center">
             <form class="d-inline" id="delete" name="delete" method="POST" action="delete.php">
             <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-success w-50" data-toggle="modal" data-target="#modal_change_'.$id.'">
+            <button type="button" class="btn btn-success w-50" data-toggle="modal" data-target="#modal_change_'.$id_mesin.'">
             <i class="fa fa-edit"></i>
             </button>
-            <input type="hidden" class="form-control" id="id" name="id" value="'.$id.'">
+            <input type="hidden" class="form-control" id="id" name="id" value="'.$id_mesin.'">
             <button type="submit" name="delete" class="btn btn-danger w-50">
             <i class="fa fa-trash"></i>
             </button>
@@ -90,7 +105,7 @@
             </td>
             </tr>
             <!-- Modal -->
-            <div class="modal fade" id="modal_change_operator_'.$id_operator.'" tabindex="-1" role="dialog" aria-labelledby="modal_change_operator_label_'.$id_operator.'" aria-hidden="true">
+            <div class="modal fade" id="modal_change_'.$id_mesin.'" tabindex="-1" role="dialog" aria-labelledby="modal_change_operator_label_'.$id_mesin.'" aria-hidden="true">
             <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -102,17 +117,17 @@
             <div class="modal-body">
             <form name="change" id="change" method="POST" action="change.php">
             <div class="form-group">
-            <input type="hidden" class="form-control" id="id_operator" name="id_operator" aria-describedby="id_operator" placeholder="ID Operator" value="'.$id_operator.'">
-            <label for="nama_operator">Nama Operator</label>
-            <input type="text" class="form-control" id="nama_operator" name="nama_operator" aria-describedby="nama_operator" placeholder="Nama Operator" value="'.$nama_operator.'">
+            <input type="hidden" class="form-control" id="id_mesin" name="id_mesin" aria-describedby="id_mesin" placeholder="ID Operator" value="'.$id_mesin.'">
+            <label for="merk_mesin">merk mesin</label>
+            <input type="text" class="form-control" id="merk_mesin" name="merk_mesin" aria-describedby="merk_mesin" placeholder="merk mesin" value="'.$merk.'">
             </div>
             <div class="form-group">
-            <label for="jenis_pekerjaan">Jenis Pekerjaan</label>
-            <input type="text" class="form-control" id="jenis_pekerjaan" name="jenis_pekerjaan" placeholder="Jenis Pekerjaan" value="'.$jenis_pekerjaan.'">
+            <label for="tanggal_maintenance">tanggal maintenance</label>
+            <input type="text" class="form-control" id="tanggal_maintenance" name="tanggal_maintenance" placeholder="Jenis Pekerjaan" value="'.$tanggal_maintenance.'">
             </div>
             <div class="form-group">
-            <label for="jam_kerja">Jam Kerja</label>
-            <input type="text" class="form-control" id="jam_kerja" name="jam_kerja" placeholder="Jam Kerja" value="'.$jam_kerja.'">
+            <label for="nama_mesin">nama mesin</label>
+            <input type="text" class="form-control" id="nama_mesin" name="nama_mesin" placeholder="nama mesin" value="'.$nama_mesin.'">
             </div>
             <button type="submit" class="btn btn-primary" name="change">Submit</button>
             </form>

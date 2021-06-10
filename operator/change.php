@@ -2,7 +2,7 @@
 
 require_once("../config.php");
 
-if(isset($_POST['change_operator'])){
+if(isset($_POST['change'])){
 
     $nama_operator = $_POST['nama_operator'];
     $jenis_pekerjaan = $_POST['jenis_pekerjaan'];

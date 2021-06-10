@@ -21,11 +21,11 @@ $currentRoute = $Route[count($Route)-1];
             <li  class="<?php if($currentRoute == "mesinsetengahjadi") echo " active" ?>">
                 <a href="<?php if($currentRoute != "mesinsetengahjadi") echo "../mesinsetengahjadi" ?>">Mesin Setengah Jadi</a>
             </li>
-            <li class="<?php if($currentRoute == "produksetengahjadi") echo " active" ?>">
-                <a href="<?php if($currentRoute != "produksetengahjadi") echo "../produksetengahjadi" ?>">Produk Setengah jadi</a>
-            </li>
             <li class="<?php if($currentRoute == "mesinjadi") echo " active" ?>">
                 <a href="<?php if($currentRoute != "mesinjadi") echo "../mesinjadi" ?>">Mesin Jadi</a>
+            </li>
+            <li class="<?php if($currentRoute == "produksetengahjadi") echo " active" ?>">
+                <a href="<?php if($currentRoute != "produksetengahjadi") echo "../produksetengahjadi" ?>">Produk Setengah jadi</a>
             </li>
             <li class="<?php if($currentRoute == "produkjadi") echo " active" ?>">
                 <a href="<?php if($currentRoute != "produkjadi") echo "../produkjadi" ?>">Produk jadi</a>

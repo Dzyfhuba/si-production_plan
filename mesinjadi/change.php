@@ -2,23 +2,24 @@
 
 require_once("../config.php");
 
-if(isset($_POST['change_operator'])){
+if(isset($_POST['change'])){
 
-    $nama_operator = $_POST['nama_operator'];
-    $jenis_pekerjaan = $_POST['jenis_pekerjaan'];
-    $jam_kerja = $_POST['jam_kerja'];
-    $id_operator = $_POST['id_operator'];
+
+    $id_mesin_produk_jadi = $_POST['id_mesin'];
+    $merk_mesin = $_POST['merk_mesin'];
+    $tanggal_maintenance = $_POST['tanggal_maintenance'];
+    $nama_mesin = $_POST['nama_mesin'];
 
     // menyiapkan query
-	$sql = "UPDATE operator SET nama_operator=:nama_operator, jenis_pekerjaan=:jenis_pekerjaan, jam_kerja_operator=:jam_kerja WHERE id_operator=:id_operator";
+	$sql = "UPDATE mesin_produk_jadi SET merk_mesin=:merk_mesin, tanggal_maintenance=:tanggal_maintenance, nama_mesin=:nama_mesin WHERE id_mesin_produk_jadi=:id_mesin_produk_jadi";
 	$change = $db->prepare($sql);
 
     // bind parameter ke query
 	$params = array(
-		":id_operator" => $id_operator,
-		":nama_operator" => $nama_operator,
-		":jenis_pekerjaan" => $jenis_pekerjaan,
-		":jam_kerja" => $jam_kerja,
+		":id_mesin_produk_jadi" => $id_mesin_produk_jadi,
+		":merk_mesin" => $merk_mesin,
+		":tanggal_maintenance" => $tanggal_maintenance,
+		":nama_mesin" => $nama_mesin,
 	);
 
     // eksekusi query untuk menyimpan ke database

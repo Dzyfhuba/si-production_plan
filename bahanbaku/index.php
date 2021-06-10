@@ -29,102 +29,102 @@
                       <div class="modal-header">
                         <h5 class="modal-title" id="modal_insert_label">Input Data</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">
-                    <form name="insert" id="insert" method="POST" action="insert.php">
-                      <div class="form-group">
-                        <label for="jenis">jenis</label>
-                        <input type="text" class="form-control" id="jenis" name="jenis" aria-describedby="jenis" placeholder="jenis">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <label for="jumlah">jumlah</label>
-                        <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="jumlah">
+                    <div class="modal-body">
+                        <form name="insert" id="insert" method="POST" action="insert.php">
+                            <div class="form-group">
+                                <label for="jenis">jenis</label>
+                                <input type="text" class="form-control" id="jenis" name="jenis" aria-describedby="jenis" placeholder="jenis">
+                            </div>
+                            <div class="form-group">
+                                <label for="jumlah">jumlah</label>
+                                <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="jumlah">
+                            </div>
+                            <div class="form-group">
+                                <label for="tanggal_masuk">tanggal masuk</label>
+                                <input type="text" class="form-control" id="tanggal_masuk" name="tanggal_masuk" placeholder="DD/MM/YYYY">
+                            </div>
+                            <button type="submit" class="btn btn-primary" name="insert">Submit</button>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="tanggal_masuk">tanggal masuk</label>
-                        <input type="text" class="form-control" id="tanggal_masuk" name="tanggal_masuk" placeholder="DD/MM/YYYY">
-                    </div>
-                    <button type="submit" class="btn btn-primary" name="insert">Submit</button>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<table class="table table-bordered">
-  <thead class="thead-dark text-center">
-    <tr>
-        <th scope="col">id</th>
-        <th scope="col">jenis</th>
-        <th scope="col">jumlah</th>
-        <th scope="col">tanggal masuk</th>
-        <th scope="col">kontrol</th>
-    </tr>
-</thead>
-<tbody>
-    <?php
-    if ($data_operator){
-        foreach($data_operator as $data) {
-            $id = $data["id_bahan_baku"];
-            $jenis = $data["jenis_bahan_baku"];
-            $jumlah = $data["jumlah_bahan_baku"];
-            $tanggal_masuk = $data["tanggal_masuk_bahan_baku"];
-            echo '<tr>
-            <th scope="row">'.$id.'</th>
-            <td>'.$jenis.'</td>
-            <td>'.$jumlah.'</td>
-            <td>'.$tanggal_masuk.'</td>
-            <td class="text-center">
-            <form class="d-inline" id="delete" name="delete" method="POST" action="delete.php">
-            <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-success w-50" data-toggle="modal" data-target="#modal_change_'.$id.'">
-            <i class="fa fa-edit"></i>
-            </button>
-            <input type="hidden" class="form-control" id="id" name="id" value="'.$id.'">
-            <button type="submit" name="delete" class="btn btn-danger w-50">
-            <i class="fa fa-trash"></i>
-            </button>
-            </div>
-            </form>
-            </td>
+        <table class="table table-bordered">
+          <thead class="thead-dark text-center">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">jenis</th>
+                <th scope="col">jumlah</th>
+                <th scope="col">tanggal masuk</th>
+                <th scope="col">kontrol</th>
             </tr>
-            <!-- Modal -->
-            <div class="modal fade" id="modal_change_'.$id.'" tabindex="-1" role="dialog" aria-labelledby="modal_change_label_'.$id.'" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="modal_change_label">Ubah Data</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <div class="modal-body">
-            <form name="change" id="change" method="POST" action="change.php">
-            <div class="form-group">
-            <input type="hidden" class="form-control" id="id" name="id" aria-describedby="id" placeholder="ID Operator" value="'.$id.'">
-            <label for="jenis">jenis</label>
-            <input type="text" class="form-control" id="jenis" name="jenis" aria-describedby="jenis" placeholder="jenis" value="'.$jenis.'">
-            </div>
-            <div class="form-group">
-            <label for="jumlah">Jumlah</label>
-            <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="jumlah" value="'.$jumlah.'">
-            </div>
-            <div class="form-group">
-            <label for="tanggal_masuk">tanggal masuk</label>
-            <input type="text" class="form-control" id="tanggal_masuk" name="tanggal_masuk" placeholder="DD/MM/YYYY" value="'.$tanggal_masuk.'">
-            </div>
-            <button type="submit" class="btn btn-primary" name="change">Submit</button>
-            </form>
-            </div>
-            </div>
-            </div>
-            </div>';
-        }
-    }
-    ?>
-</tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php
+            if ($data_operator){
+                foreach($data_operator as $data) {
+                    $id = $data["id_bahan_baku"];
+                    $jenis = $data["jenis_bahan_baku"];
+                    $jumlah = $data["jumlah_bahan_baku"];
+                    $tanggal_masuk = $data["tanggal_masuk_bahan_baku"];
+                    echo '<tr>
+                    <th scope="row">'.$id.'</th>
+                    <td>'.$jenis.'</td>
+                    <td>'.$jumlah.'</td>
+                    <td>'.$tanggal_masuk.'</td>
+                    <td class="text-center">
+                    <form class="d-inline" id="delete" name="delete" method="POST" action="delete.php">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-success w-50" data-toggle="modal" data-target="#modal_change_'.$id.'">
+                    <i class="fa fa-edit"></i>
+                    </button>
+                    <input type="hidden" class="form-control" id="id" name="id" value="'.$id.'">
+                    <button type="submit" name="delete" class="btn btn-danger w-50">
+                    <i class="fa fa-trash"></i>
+                    </button>
+                    </div>
+                    </form>
+                    </td>
+                    </tr>
+                    <!-- Modal -->
+                    <div class="modal fade" id="modal_change_'.$id.'" tabindex="-1" role="dialog" aria-labelledby="modal_change_label_'.$id.'" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="modal_change_label">Ubah Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                    <form name="change" id="change" method="POST" action="change.php">
+                    <div class="form-group">
+                    <input type="hidden" class="form-control" id="id" name="id" aria-describedby="id" placeholder="ID Operator" value="'.$id.'">
+                    <label for="jenis">jenis</label>
+                    <input type="text" class="form-control" id="jenis" name="jenis" aria-describedby="jenis" placeholder="jenis" value="'.$jenis.'">
+                    </div>
+                    <div class="form-group">
+                    <label for="jumlah">Jumlah</label>
+                    <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="jumlah" value="'.$jumlah.'">
+                    </div>
+                    <div class="form-group">
+                    <label for="tanggal_masuk">tanggal masuk</label>
+                    <input type="text" class="form-control" id="tanggal_masuk" name="tanggal_masuk" placeholder="DD/MM/YYYY" value="'.$tanggal_masuk.'">
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="change">Submit</button>
+                    </form>
+                    </div>
+                    </div>
+                    </div>
+                    </div>';
+                }
+            }
+            ?>
+        </tbody>
+    </table>
 </div>
 
 </div>

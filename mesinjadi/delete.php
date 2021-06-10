@@ -2,16 +2,16 @@
 
 require_once("../config.php");
 
-if(isset($_POST['delete_operator'])){
-    $id_operator = $_POST['id_operator'];
+if(isset($_POST['delete'])){
+    $id_mesin_produk_jadi = $_POST['id_mesin'];
 
     // menyiapkan query
-	$sql = "DELETE FROM operator WHERE id_operator=:id_operator";
+	$sql = "DELETE FROM mesin_produk_jadi WHERE id_mesin_produk_jadi=:id_mesin_produk_jadi";
 	$delete = $db->prepare($sql);
 
     // bind parameter ke query
 	$params = array(
-		":id_operator" => $id_operator
+		":id_mesin_produk_jadi" => $id_mesin_produk_jadi
 	);
 
     // eksekusi query untuk menyimpan ke database
