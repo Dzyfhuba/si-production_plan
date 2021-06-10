@@ -42,6 +42,7 @@
     <button type="submit" class="btn btn-primary" name="register">Register</button>
   </form>
 </div>
+<?php include "../footer.php" ?>
 </div>
 </body>
 </html>

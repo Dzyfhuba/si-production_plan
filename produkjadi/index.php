@@ -18,12 +18,12 @@
             <?php include "../topbar.php" ?>
             <div>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-success w-100 mb-3" data-toggle="modal" data-target="#modal_insert_operator">
+                <button type="button" class="btn btn-success w-100 mb-3" data-toggle="modal" data-target="#modal_insert">
                   Input
               </button>
 
               <!-- Modal -->
-              <div class="modal fade" id="modal_insert_operator" tabindex="-1" role="dialog" aria-labelledby="modal_insert_operator_label" aria-hidden="true">
+              <div class="modal fade" id="modal_insert" tabindex="-1" role="dialog" aria-labelledby="modal_insert_operator_label" aria-hidden="true">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -35,16 +35,25 @@
                   <div class="modal-body">
                     <form name="insert" id="insert" method="POST" action="insert.php">
                       <div class="form-group">
-                        <label for="nama_operator">Nama Operator</label>
-                        <input type="text" class="form-control" id="nama_operator" name="nama_operator" aria-describedby="nama_operator" placeholder="Nama Operator">
+                        <label for="id_mesin">id mesin</label>
+                        <input type="text" class="form-control" id="id_mesin" name="id_mesin" aria-describedby="id_mesin" placeholder="id mesin">
+                        <!-- <select class="custom-select" id="id_mesin" name="id_mesin">
+                            <?php foreach($id_mesin2 as $id) {?>
+                                <option><?php echo $id ?></option>
+                            <?php } ?>
+                        </select> -->
                     </div>
                     <div class="form-group">
-                        <label for="jenis_pekerjaan">Jenis Pekerjaan</label>
-                        <input type="text" class="form-control" id="jenis_pekerjaan" name="jenis_pekerjaan" placeholder="Jenis Pekerjaan">
+                        <label for="nama_produk">nama produk</label>
+                        <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="nama produk">
                     </div>
                     <div class="form-group">
-                        <label for="jam_kerja">Jam Kerja</label>
-                        <input type="text" class="form-control" id="jam_kerja" name="jam_kerja" placeholder="Jam Kerja">
+                        <label for="jumlah_produk">Jumlah produk</label>
+                        <input type="text" class="form-control" id="jumlah_produk" name="jumlah_produk" placeholder="Jumlah Kerja">
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal_produk">tanggal produk</label>
+                        <input type="text" class="form-control" id="tanggal_produk" name="tanggal_produk" placeholder="tanggal produk">
                     </div>
                     <button type="submit" class="btn btn-primary" name="insert">Submit</button>
                 </form>
@@ -55,10 +64,11 @@
 <table class="table table-bordered">
   <thead class="thead-dark text-center">
     <tr>
-        <th scope="col">id operator</th>
-        <th scope="col">nama operator</th>
-        <th scope="col">jenis pekerjaan</th>
-        <th scope="col">jam kerja</th>
+        <th scope="col">id produk</th>
+        <th scope="col">id mesin</th>
+        <th scope="col">nama produk</th>
+        <th scope="col">jumlah produk</th>
+        <th scope="col">tanggal produk</th>
         <th scope="col">kontrol</th>
     </tr>
 </thead>
@@ -66,22 +76,24 @@
     <?php
     if ($data_operator){
         foreach($data_operator as $data) {
-            $id_operator = $data["id_operator"];
-            $nama_operator = $data["nama_operator"];
-            $jenis_pekerjaan = $data["jenis_pekerjaan"];
-            $jam_kerja = $data["jam_kerja_operator"];
+            $id_produk = $data["id_produk_jadi"];
+            $id_mesin = $data["id_mesin_produk_jadi"];
+            $nama_produk = $data["nama_produk_jadi"];
+            $jumlah_produk = $data["jumlah_produk_jadi"];
+            $tanggal_produk = $data["tanggal_produk_jadi"];
             echo '<tr>
-            <th scope="row">'.$id_operator.'</th>
-            <td>'.$nama_operator.'</td>
-            <td>'.$jenis_pekerjaan.'</td>
-            <td>'.$jam_kerja.'</td>
+            <td>'.$id_produk.'</ts>
+            <td>'.$id_mesin.'</td>
+            <td>'.$nama_produk.'</td>
+            <td>'.$jumlah_produk.'</td>
+            <td>'.$tanggal_produk.'</td>
             <td class="text-center">
             <form class="d-inline" id="delete" name="delete" method="POST" action="delete.php">
             <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-success w-50" data-toggle="modal" data-target="#modal_change_'.$id.'">
+            <button type="button" class="btn btn-success w-50" data-toggle="modal" data-target="#modal_change_'.$id_produk.'">
             <i class="fa fa-edit"></i>
             </button>
-            <input type="hidden" class="form-control" id="id" name="id" value="'.$id.'">
+            <input type="hidden" class="form-control" id="id_produk" name="id_produk" value="'.$id_produk.'">
             <button type="submit" name="delete" class="btn btn-danger w-50">
             <i class="fa fa-trash"></i>
             </button>
@@ -90,7 +102,7 @@
             </td>
             </tr>
             <!-- Modal -->
-            <div class="modal fade" id="modal_change_operator_'.$id_operator.'" tabindex="-1" role="dialog" aria-labelledby="modal_change_operator_label_'.$id_operator.'" aria-hidden="true">
+            <div class="modal fade" id="modal_change_'.$id_produk.'" tabindex="-1" role="dialog" aria-labelledby="modal_change_operator_label_'.$id_produk.'" aria-hidden="true">
             <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -102,17 +114,18 @@
             <div class="modal-body">
             <form name="change" id="change" method="POST" action="change.php">
             <div class="form-group">
-            <input type="hidden" class="form-control" id="id_operator" name="id_operator" aria-describedby="id_operator" placeholder="ID Operator" value="'.$id_operator.'">
-            <label for="nama_operator">Nama Operator</label>
-            <input type="text" class="form-control" id="nama_operator" name="nama_operator" aria-describedby="nama_operator" placeholder="Nama Operator" value="'.$nama_operator.'">
+            <input type="hidden" class="form-control" id="id_produk" name="id_produk" aria-describedby="id_produk" placeholder="ID Produk" value="'.$id_produk.'">
+            <label for="nama_operator">ID Mesin</label>
+            <input type="text" class="form-control" id="id_mesin" name="id_mesin" aria-describedby="nama_operator" placeholder="ID Mesin" value="'.$id_mesin.'">
+            <label for="nama_operator">Nama Produk</label>
+            <input type="text" class="form-control" id="nama_produk" name="nama_produk" aria-describedby="nama_operator" placeholder="Nama Produk" value="'.$nama_produk.'">
             </div>
             <div class="form-group">
-            <label for="jenis_pekerjaan">Jenis Pekerjaan</label>
-            <input type="text" class="form-control" id="jenis_pekerjaan" name="jenis_pekerjaan" placeholder="Jenis Pekerjaan" value="'.$jenis_pekerjaan.'">
+            <label for="jumlah_produk">Jam Kerja</label>
+            <input type="text" class="form-control" id="jumlah_produk" name="jumlah_produk" placeholder="jumlah produk Kerja" value="'.$jumlah_produk.'">
             </div>
-            <div class="form-group">
-            <label for="jam_kerja">Jam Kerja</label>
-            <input type="text" class="form-control" id="jam_kerja" name="jam_kerja" placeholder="Jam Kerja" value="'.$jam_kerja.'">
+            <label for="tanggal_produk">Tanggal Produk</label>
+            <input type="text" class="form-control" id="tanggal_produk" name="tanggal_produk" placeholder="Tanggal Produk" value="'.$tanggal_produk.'">
             </div>
             <button type="submit" class="btn btn-primary" name="change">Submit</button>
             </form>
@@ -128,6 +141,7 @@
 </div>
 
 </div>
+<?php include "../footer.php" ?>
 </div>
 
 <!-- jQuery CDN - Slim version (=without AJAX) -->

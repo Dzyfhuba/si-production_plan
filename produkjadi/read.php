@@ -4,7 +4,7 @@ require_once("../config.php");
 
 
     // menyiapkan query
-$sql = "SELECT * FROM operator";
+$sql = "SELECT * FROM produk_jadi";
 	$read = $db->prepare($sql);
 
     // eksekusi query untuk menyimpan ke database

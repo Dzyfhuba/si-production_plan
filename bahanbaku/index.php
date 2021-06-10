@@ -128,6 +128,7 @@
 </div>
 
 </div>
+<?php include "../footer.php" ?>
 </div>
 
 <!-- jQuery CDN - Slim version (=without AJAX) -->
