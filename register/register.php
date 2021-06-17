@@ -27,7 +27,7 @@ if(isset($_POST['register'])){
 	$_SESSION["user"] = $user;
     // jika query simpan berhasil, maka user sudah terdaftar
     // maka alihkan ke halaman login
-	if($saved) header("Location: ../");
+	if($saved) header("Location: http://localhost/sisteminformasi/");
 }
 
 ?>

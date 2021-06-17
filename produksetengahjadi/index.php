@@ -36,12 +36,11 @@
                     <form name="insert" id="insert" method="POST" action="insert.php">
                       <div class="form-group">
                         <label for="id_mesin">id mesin</label>
-                        <input type="text" class="form-control" id="id_mesin" name="id_mesin" aria-describedby="id_mesin" placeholder="id mesin">
-                        <!-- <select class="custom-select" id="id_mesin" name="id_mesin">
-                            <?php foreach($id_mesin2 as $id) {?>
-                                <option><?php echo $id ?></option>
+                        <select class="w-100" id="id_mesin" name="id_mesin" placeholder="ID Mesin">
+                            <?php foreach($option_mesin as $option) {?>
+                                <option><?php echo $option["id_mesin_produk_setengah_jadi"] ?></option>
                             <?php } ?>
-                        </select> -->
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="nama_produk">nama produk</label>
@@ -50,10 +49,6 @@
                     <div class="form-group">
                         <label for="jumlah_produk">Jumlah produk</label>
                         <input type="text" class="form-control" id="jumlah_produk" name="jumlah_produk" placeholder="Jumlah Kerja">
-                    </div>
-                    <div class="form-group">
-                        <label for="tanggal_produk">tanggal produk</label>
-                        <input type="text" class="form-control" id="tanggal_produk" name="tanggal_produk" placeholder="tanggal produk">
                     </div>
                     <button type="submit" class="btn btn-primary" name="insert">Submit</button>
                 </form>
@@ -68,7 +63,6 @@
         <th scope="col">id mesin</th>
         <th scope="col">nama produk</th>
         <th scope="col">jumlah produk</th>
-        <th scope="col">tanggal produk</th>
         <th scope="col">kontrol</th>
     </tr>
 </thead>
@@ -80,13 +74,11 @@
             $id_mesin = $data["id_mesin_produk_setengah_jadi"];
             $nama_produk = $data["nama_produk_setengah_jadi"];
             $jumlah_produk = $data["jumlah_produk_setengah_jadi"];
-            $tanggal_produk = $data["tanggal_produk_setengah_jadi"];
             echo '<tr>
             <td>'.$id_produk.'</ts>
             <td>'.$id_mesin.'</td>
             <td>'.$nama_produk.'</td>
             <td>'.$jumlah_produk.'</td>
-            <td>'.$tanggal_produk.'</td>
             <td class="text-center">
             <form class="d-inline" id="delete" name="delete" method="POST" action="delete.php">
             <div class="btn-group" role="group" aria-label="Basic example">
@@ -115,17 +107,12 @@
             <form name="change" id="change" method="POST" action="change.php">
             <div class="form-group">
             <input type="hidden" class="form-control" id="id_produk" name="id_produk" aria-describedby="id_produk" placeholder="ID Produk" value="'.$id_produk.'">
-            <label for="nama_operator">ID Mesin</label>
-            <input type="text" class="form-control" id="id_mesin" name="id_mesin" aria-describedby="nama_operator" placeholder="ID Mesin" value="'.$id_mesin.'">
             <label for="nama_operator">Nama Produk</label>
             <input type="text" class="form-control" id="nama_produk" name="nama_produk" aria-describedby="nama_operator" placeholder="Nama Produk" value="'.$nama_produk.'">
             </div>
             <div class="form-group">
             <label for="jumlah_produk">Jam Kerja</label>
             <input type="text" class="form-control" id="jumlah_produk" name="jumlah_produk" placeholder="jumlah produk Kerja" value="'.$jumlah_produk.'">
-            </div>
-            <label for="tanggal_produk">Tanggal Produk</label>
-            <input type="text" class="form-control" id="tanggal_produk" name="tanggal_produk" placeholder="Tanggal Produk" value="'.$tanggal_produk.'">
             </div>
             <button type="submit" class="btn btn-primary" name="change">Submit</button>
             </form>

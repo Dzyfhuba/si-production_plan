@@ -36,7 +36,11 @@
                     <form name="insert" id="insert" method="POST" action="insert.php">
                       <div class="form-group">
                         <label for="id_operator">id operator</label>
-                        <input type="text" class="form-control" id="id_operator" name="id_operator" aria-describedby="id_operator" placeholder="id Operator">
+                        <select class="w-100" id="id_operator" name="id_operator" placeholder="ID Operator">
+                            <?php foreach($option_operator as $option) {?>
+                                <option><?php echo $option["id_operator"] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="merk_mesin">merk mesin</label>

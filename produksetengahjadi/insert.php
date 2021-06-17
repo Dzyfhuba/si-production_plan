@@ -7,12 +7,11 @@ if(isset($_POST['insert'])){
     $id_mesin_produk_setengah_jadi = $_POST['id_mesin'];
     $nama_produk_setengah_jadi = $_POST['nama_produk'];
     $jumlah_produk_setengah_jadi = $_POST['jumlah_produk'];
-    $tanggal_produk_setengah_jadi = $_POST['tanggal_produk'];
 
 
     // menyiapkan query
-	$sql = "INSERT INTO produk_setengah_jadi (id_mesin_produk_setengah_jadi, nama_produk_setengah_jadi, jumlah_produk_setengah_jadi, tanggal_produk_setengah_jadi) 
-	VALUES (:id_mesin_produk_setengah_jadi, :nama_produk_setengah_jadi, :jumlah_produk_setengah_jadi, :tanggal_produk_setengah_jadi)";
+	$sql = "INSERT INTO produk_setengah_jadi (id_mesin_produk_setengah_jadi, nama_produk_setengah_jadi, jumlah_produk_setengah_jadi) 
+	VALUES (:id_mesin_produk_setengah_jadi, :nama_produk_setengah_jadi, :jumlah_produk_setengah_jadi)";
 	$insert = $db->prepare($sql);
 
     // bind parameter ke query
@@ -20,7 +19,6 @@ if(isset($_POST['insert'])){
 		":id_mesin_produk_setengah_jadi" => $id_mesin_produk_setengah_jadi,
 		":nama_produk_setengah_jadi" => $nama_produk_setengah_jadi,
 		":jumlah_produk_setengah_jadi" => $jumlah_produk_setengah_jadi,
-		":tanggal_produk_setengah_jadi" => $tanggal_produk_setengah_jadi,
 	);
 
     // eksekusi query untuk menyimpan ke database

@@ -36,11 +36,19 @@
                     <form name="insert" id="insert" method="POST" action="insert.php">
                       <div class="form-group">
                         <label for="nama_mesin">id operator</label>
-                        <input type="text" class="form-control" id="nama_mesin" name="nama_mesin" aria-describedby="nama_mesin" placeholder="id Operator">
+                        <select class="w-100" id="id_operator" name="id_operator" placeholder="ID Operator">
+                            <?php foreach($option_operator as $option) {?>
+                                <option><?php echo $option["id_operator"] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="tanggal_maintenance">id bahan baku</label>
-                        <input type="text" class="form-control" id="tanggal_maintenance" name="tanggal_maintenance" placeholder="id bahan baku">
+                        <label for="id_bahan_baku">id bahan baku</label>
+                        <select class="w-100" id="id_bahan_baku" name="id_bahan_baku" placeholder="ID Bahan Baku">
+                            <?php foreach($option_bahan as $option) {?>
+                                <option><?php echo $option["id_bahan_baku"] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="merk_mesin">merk</label>
