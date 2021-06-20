@@ -111,8 +111,8 @@
             <input type="text" class="form-control" id="nama_produk" name="nama_produk" aria-describedby="nama_operator" placeholder="Nama Produk" value="'.$nama_produk.'">
             </div>
             <div class="form-group">
-            <label for="jumlah_produk">Jam Kerja</label>
-            <input type="text" class="form-control" id="jumlah_produk" name="jumlah_produk" placeholder="jumlah produk Kerja" value="'.$jumlah_produk.'">
+            <label for="jumlah_produk">Jumlah produk</label>
+            <input type="text" class="form-control" id="jumlah_produk" name="jumlah_produk" placeholder="jumlah produk" value="'.$jumlah_produk.'">
             </div>
             <button type="submit" class="btn btn-primary" name="change">Submit</button>
             </form>

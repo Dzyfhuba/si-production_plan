@@ -77,8 +77,10 @@
         <th scope="col">nama produk</th>
         <th scope="col">jumlah produk</th>
         <th scope="col">tanggal produk</th>
+        <th scope="col">kontrol</th>
     </tr>
 </thead>
+
 <tbody>
     <?php
     if ($data_operator){
@@ -96,12 +98,55 @@
             <td>'.$nama_produk.'</td>
             <td>'.$jumlah_produk.'</td>
             <td>'.$tanggal_produk.'</td>
+            <td class="text-center">
+            <form class="d-inline" id="delete" name="delete" method="POST" action="delete.php">
+            <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-success w-50" data-toggle="modal" data-target="#modal_change_'.$id_produk.'">
+            <i class="fa fa-edit"></i>
+            </button>
+            <input type="hidden" class="form-control" id="id_produk" name="id_produk" value="'.$id_produk.'">
+            <button type="submit" name="delete" class="btn btn-danger w-50">
+            <i class="fa fa-trash"></i>
+            </button>
+            </div>
+            </form>
+            </td>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modal_change_'.$id_produk.'" tabindex="-1" role="dialog" aria-labelledby="modal_change_label_'.$id_produk.'" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modal_change_operator_label">Ubah Data</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <form name="change" id="change" method="POST" action="change.php">
+            <div class="form-group">
+            <input type="hidden" class="form-control" id="id_produk" name="id_produk" aria-describedby="id_produk" placeholder="ID Produk" value="'.$id_produk.'">
+            <label for="nama_operator">Nama Produk</label>
+            <input type="text" class="form-control" id="nama_produk" name="nama_produk" aria-describedby="nama_operator" placeholder="Nama Produk" value="'.$nama_produk.'">
+            </div>
+            <div class="form-group">
+            <label for="jumlah_produk">Jumlah produk</label>
+            <input type="text" class="form-control" id="jumlah_produk" name="jumlah_produk" placeholder="jumlah produk" value="'.$jumlah_produk.'">
+            </div>
+            <button type="submit" class="btn btn-primary" name="change">Submit</button>
+            </form>
+            </div>
+            </div>
+            </div>
+            </div>
             ';
         }
+
     }
     ?>
 </tbody>
 </table>
+
 </div>
 
 </div>

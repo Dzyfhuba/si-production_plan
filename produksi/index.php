@@ -17,28 +17,42 @@
 
             <?php include "../topbar.php" ?>
             <div>
+            <div class="row mb-3">
+                <div class="col-auto mr-auto"></div>
+                <div class="col-auto text-center">
+                    <a href="../cetak" class="btn btn-info">Cetak</a>
+                </div>
+            </div>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-success w-100 mb-3" data-toggle="modal" data-target="#modal_insert_operator">
-                  Input
-              </button>
-              <table class="table table-bordered">
+                <table class="table table-bordered">
                   <thead class="thead-dark text-center">
                     <tr>
                         <th scope="col">Kode Produksi</th>
-                        <th scope="col">Produk Jadi</th>
-                        <th scope="col">Mesin Jadi</th>
-                        <th scope="col">Produk Setengah Jadi</th>
-                        <th scope="col">Mesin Setengah Jadi</th>
                         <th scope="col">Operator</th>
+                        <th scope="col">Bahan Baku</th>
                         <th scope="col">Mesin Setengah Jadi</th>
+                        <th scope="col">Produk Setengah Jadi</th>
+                        <th scope="col">Mesin Jadi</th>
+                        <th scope="col">Produk Jadi</th>
+                        <th scope="col">tanggal Jadi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    if ($data_operator){
-                        foreach($datas as $data) { ?>
-
-                      <?php  }
+                    if ($data_all){
+                        foreach($data_all as $data) { ?>
+                            <tr>
+                                <td><?php echo $data["kode_produksi"] ?></td>
+                                <td><?php echo $data["nama_operator"] ?></td>
+                                <td><?php echo $data["bahan_baku"] ?></td>
+                                <td><?php echo $data["mesin_setengah_jadi"] ?></td>
+                                <td><?php echo $data["produk_setengah_jadi"] ?></td>
+                                <td><?php echo $data["mesin_jadi"] ?></td>
+                                <td><?php echo $data["produk_jadi"] ?></td>
+                                <td><?php echo $data["tanggal_jadi"] ?></td>
+                                
+                            </tr>
+                        <?php  }
                     }
                     ?>
                 </tbody>
